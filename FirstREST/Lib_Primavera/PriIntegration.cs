@@ -275,7 +275,7 @@ namespace FirstREST.Lib_Primavera
                 else
                 {
                     objArtigo = PriEngine.Engine.Comercial.Artigos.Edita(codArtigo);
-                    objList = PriEngine.Engine.Consulta("Select top 1 from anexos where chave ='" + objArtigo.get_Artigo() + "' and tabela=4");
+                    objList = PriEngine.Engine.Consulta("Select top1 from anexos where chave ='" + objArtigo.get_Artigo() + "' and tabela=4");
                     myArt.CodArtigo = objArtigo.get_Artigo();
                     myArt.DescArtigo = objArtigo.get_Descricao();
                     myArt.Observacoes = objArtigo.get_Observacoes();

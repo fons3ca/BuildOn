@@ -263,6 +263,7 @@ namespace FirstREST.Lib_Primavera
             GcpBEArtigo objArtigo = new GcpBEArtigo();
             GcpBEArtigoMoeda objArtigoMoeda = new GcpBEArtigoMoeda();
             Model.Artigo myArt = new Model.Artigo();
+            StdBELista objList;
 
             if (PriEngine.InitializeCompany(baseDados, "", "") == true)
             {
@@ -274,6 +275,7 @@ namespace FirstREST.Lib_Primavera
                 else
                 {
                     objArtigo = PriEngine.Engine.Comercial.Artigos.Edita(codArtigo);
+                    objList = PriEngine.Engine.Consulta("Select top 1 from anexos where chave ='" + objArtigo.get_Artigo() + "' and tabela=4");
                     myArt.CodArtigo = objArtigo.get_Artigo();
                     myArt.DescArtigo = objArtigo.get_Descricao();
                     myArt.Observacoes = objArtigo.get_Observacoes();
@@ -283,7 +285,7 @@ namespace FirstREST.Lib_Primavera
                     myArt.Preco = objArtigoMoeda.get_PVP1();
                     myArt.Preco = objArtigo.get_PCPadrao();
                     myArt.qtdStock = objArtigo.get_StkActual();
-                    // Nao sei ir buscar a imagem à primavera.....
+                    myArt.Imagem = objList.Valor("id");
                     return myArt;
                 }
                 

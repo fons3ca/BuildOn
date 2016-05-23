@@ -1,0 +1,49 @@
+﻿@using FirstREST.Lib_Primavera;
+@using FirstREST.Lib_Primavera.Model;
+@using FirstREST.Controllers;
+@{
+    ViewBag.Title = "Home";
+    Cliente c = PriIntegration.GetCliente("ALCAD");
+    Artigo a1 = PriIntegration.GetArtigo("A0001");
+}
+<html>
+<head>
+    <title>Build On - Homepage</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <nav>
+        <a class="imagem" href="http://localhost:49822/home/home">
+            <img src="~/Images/Drawing.png" alt="Company Logo" height="220" width="220">
+        </a>
+        <ul>
+            <li class="horizontal">HOME PAGE</a></li>
+            <li class="horizontal">NEW ITEMS</li>
+            <li class="horizontal">ABOUT</li>
+            <li class="horizontal">CONTACTS</li>
+        </ul>
+    </nav>
+    <div class="categoria">
+        <ul>
+            <li>Components</li>
+            <li>Periferals</li>
+            <li>Accesories</li>
+            <li>Miscellaneous</li>
+        </ul>
+        <p>
+            Nome: @c.NomeCliente <br />
+            Morada: @c.Morada <br />
+            Email: @c.Email <br />
+            Zona: @c.Freguesia
+        </p>
+        <p>
+            --------- Artigo ---------<br />
+            @a1.DescArtigo<br />
+            @a1.Observacoes<br />
+
+
+        </p>
+    </div>
+</body>
+</html>
